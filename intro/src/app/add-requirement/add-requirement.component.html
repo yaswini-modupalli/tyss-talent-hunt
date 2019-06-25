@@ -1,0 +1,81 @@
+<div class="container card mt-4 mb-4">
+  <div class="card-body">
+    <header class="border-bottom mb-3 shadow p-3 mb-5 bg-white rounded">
+      <h1 class="text-center">
+        Add Requirement
+      </h1>
+    </header>
+    <form action="/add/api" method="post" #form="ngForm" (ngSubmit)="addRequirement(form)">
+      <div class="col-md-6 float-left">
+        <div class="form-group">
+          <label for="client">Client Name</label>
+          <input type="text" name="client" id="client" class="form-control shadow p-3 mb-5 bg-white rounded" ngModel
+          #client="ngModel" minlength="3" required>
+          <div class="alert alert-danger mt-2" *ngIf="client.touched && client.invalid">
+            <p *ngIf="client.errors.required">This field cannot be empty</p>
+            <p *ngIf="client.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="stack">Select Stack</label>
+          <input list="stack" name="stack" class="form-control shadow p-3 mb-5 bg-white rounded" #stack="ngModel" ngModel required>
+          <datalist id="stack">
+            <option *ngFor="let group of stacks" value={{group}}>
+          </datalist>
+        </div>
+        <div class="form-group">
+          <label for="experience">Experience Required</label>
+          <input type="text" name="experience" id="experience" class="form-control shadow p-3 mb-5 bg-white rounded" ngModel
+          #experience="ngModel" minlength="3" required>
+          <div class="alert alert-danger mt-2" *ngIf="experience.touched && experience.invalid">
+            <p *ngIf="experience.errors.required">This field cannot be empty</p>
+            <p *ngIf="experience.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" name="location" id="location" class="form-control shadow p-3 mb-5 bg-white rounded" ngModel
+          #location="ngModel" minlength="3" required>
+          <div class="alert alert-danger mt-2" *ngIf="location.touched && location.invalid">
+            <p *ngIf="location.errors.required">This field cannot be empty</p>
+            <p *ngIf="location.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 float-left">
+        <div class="form-group">
+          <label for="positions">No of Positions</label>
+          <input type="number" name="positions" id="positions" class="form-control shadow p-3 mb-5 bg-white rounded" ngModel
+          #positions="ngModel" required min="1">
+          <div class="alert alert-danger mt-2" *ngIf="positions.touched && positions.invalid">
+            <p *ngIf="positions.errors.required">This field cannot be empty</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="designation">Designation</label>
+          <input type="text" name="designation" id="designation" class="form-control shadow p-3 mb-5 bg-white rounded" ngModel
+          #designation="ngModel" required min="1">
+          <div class="alert alert-danger mt-2" *ngIf="designation.touched && designation.invalid">
+            <p *ngIf="designation.errors.required">This field cannot be empty</p>
+            <p *ngIf="designation.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description">Job Description</label>
+          <input type="text" name="description" id="designation" class="form-control shadow p-3 mb-5 bg-white rounded" ngModel
+          #description="ngModel" required min="1">
+          <div class="alert alert-danger mt-2" *ngIf="description.touched && description.invalid">
+            <p *ngIf="description.errors.required">This field cannot be empty</p>
+            <p *ngIf="description.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="closeDate">Closing Date</label>
+          <input type="date" name="closeDate" id="closeDate" class="form-control shadow p-3 mb-5 bg-white rounded" ngModel
+          #closeDate="ngModel" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-outline-dark form-control" [disabled]="form.invalid">Add Requirement</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,155 @@
+<div class="container mt-4">
+  <table class="table table-striped table-dark table-bordered table-hover table-responsive">
+    <thead class='thead-dark'>
+      <tr>
+        <th>Index</th>
+        <th>Client Name</th>
+        <th>Stack</th>
+        <th>Experience Required</th>
+        <th>Location</th>
+        <th>Positions</th>
+        <th>Designataion</th>
+        <th>Job Description</th>
+        <th>Closing Date</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let requirement of reqService.requirement; index as i'>
+        <td>{{i+1}}</td>
+        <td>{{requirement.client}}</td>
+        <td>{{requirement.stack}}</td>
+        <td>{{requirement.experience}}</td>
+        <td>{{requirement.location}}</td>
+        <td>{{requirement.positions}}</td>
+        <td>{{requirement.designation}}</td>
+        <td>{{requirement.description}}</td>
+        <td>{{requirement.closeDate | date : short}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalScrollable" (click)="editRequirement(requirement)">
+            Update
+          </button>
+        </td>
+        <td>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">
+            Remove
+          </button>
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-dark" id="exampleModalCenterTitle">Please Confirm</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                 <h4 class="text-center text-danger">Are you sure to Delete client {{requirement.client}}</h4>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="removeRequirement(requirement._id)" data-dismiss="modal">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- modal ends -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+  
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle">Update Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form action="/add/api" method="post" #form="ngForm" (ngSubmit)="addRequirement(form)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="reqService.selectedRequirement._id">
+              <div class="form-group">
+                <label for="client">Client Name</label>
+                <input type="text" name="client" id="client" class="form-control" [(ngModel)]='reqService.selectedRequirement.client'
+                #client="ngModel" minlength="3" required>
+                <div class="alert alert-danger mt-2" *ngIf="client.touched && client.invalid">
+                  <p *ngIf="client.errors.required">This field cannot be empty</p>
+                  <p *ngIf="client.errors.minlength">This field should contain atleast 3 characters</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="stack">Select Stack</label>
+                <input list="stack" name="stack" class="form-control" #stack="ngModel" [(ngModel)]='reqService.selectedRequirement.stack' required>
+                <datalist id="stack">
+                  <option value="MEAN Stack">
+                  <option value="MERN Stack">
+                  <option value="Java Full Stack">
+                  <option value="Dot Net Full Stack">
+                  <option value="DevOps">
+                  <option value="Python">
+                </datalist>
+              </div>
+              <div class="form-group">
+                <label for="experience">Experience Required</label>
+                <input type="text" name="experience" id="experience" class="form-control" [(ngModel)]='reqService.selectedRequirement.experience'
+                #experience="ngModel" minlength="3" required>
+                <div class="alert alert-danger mt-2" *ngIf="experience.touched && experience.invalid">
+                  <p *ngIf="experience.errors.required">This field cannot be empty</p>
+                  <p *ngIf="experience.errors.minlength">This field should contain atleast 3 characters</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" name="location" id="location" class="form-control" [(ngModel)]='reqService.selectedRequirement.location'
+                #location="ngModel" minlength="3" required>
+                <div class="alert alert-danger mt-2" *ngIf="location.touched && location.invalid">
+                  <p *ngIf="location.errors.required">This field cannot be empty</p>
+                  <p *ngIf="location.errors.minlength">This field should contain atleast 3 characters</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="positions">No of Positions</label>
+                <input type="number" name="positions" id="positions" class="form-control" [(ngModel)]='reqService.selectedRequirement.positions'
+                #positions="ngModel" required min="1">
+                <div class="alert alert-danger mt-2" *ngIf="positions.touched && positions.invalid">
+                  <p *ngIf="positions.errors.required">This field cannot be empty</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="designation">Designation</label>
+                <input type="text" name="designation" id="designation" class="form-control" [(ngModel)]='reqService.selectedRequirement.designation'
+                #designation="ngModel" required min="1">
+                <div class="alert alert-danger mt-2" *ngIf="designation.touched && designation.invalid">
+                  <p *ngIf="designation.errors.required">This field cannot be empty</p>
+                  <p *ngIf="designation.errors.minlength">This field should contain atleast 3 characters</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="description">Job Description</label>
+                <input type="text" name="description" id="designation" class="form-control" [(ngModel)]='reqService.selectedRequirement.description'
+                #description="ngModel" required min="1">
+                <div class="alert alert-danger mt-2" *ngIf="description.touched && description.invalid">
+                  <p *ngIf="description.errors.required">This field cannot be empty</p>
+                  <p *ngIf="description.errors.minlength">This field should contain atleast 3 characters</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="closeDate">Closing Date</label>
+                <input type="date" name="closeDate" id="closeDate" class="form-control" [(ngModel)]='reqService.selectedRequirement.closeDate'
+                #closeDate="ngModel" required>
+              </div>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Update</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

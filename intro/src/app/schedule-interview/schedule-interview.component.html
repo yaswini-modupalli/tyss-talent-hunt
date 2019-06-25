@@ -1,0 +1,150 @@
+<div class="container mt-4 mb-4 card">
+  <div class="card-body">
+    <header>
+      <h1 class="text-center h1">Schedule Interview</h1>
+    </header>
+    <form action="" method="post" #form="ngForm" (ngSubmit)="addInterview(form)">
+      <div class="col-md-4 float-left">
+        <div class="form-group">
+          <label for="cname"> Candidate Name</label>
+          <input type="text" name="cname" id="cname" class="form-control" ngModel
+          #cname="ngModel" minlength="3" required>
+          <div class="alert alert-danger mt-2" *ngIf="cname.touched && cname.invalid">
+            <p *ngIf="cname.errors.required">This field cannot be empty</p>
+            <p *ngIf="cname.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="gender">Select Gender</label>
+          <input list="gender" name="gender" class="form-control" #stack="ngModel" ngModel required>
+          <datalist id="gender">
+            <option value="Male">
+            <option value="Female">
+          </datalist>
+        </div>
+        <div class="form-group">
+          <label for="sdate">Schedule Date and Time</label> 
+          <input type="datetime-local" name="sdate" id="sdate" class="form-control" ngModel
+          #sdate="ngModel" required>
+          <div class="alert alert-danger mt-2" *ngIf="sdate.touched && sdate.invalid">
+            <p *ngIf="sdate.errors.required">This field cannot be empty</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="stack">Select Stack</label>
+          <input list="stack" name="stack" class="form-control" #stack="ngModel" ngModel required>
+          <datalist id="stack">
+            <option *ngFor="let group of stacks" value={{group}}>
+          </datalist>
+        </div>
+        <div class="form-group">
+          <label for="contactNo"> Contact Number</label>
+          <input type="text" name="contactNo" id="contactNo" class="form-control" ngModel
+          #contactNo="ngModel" minlength="10" required>
+          <div class="alert alert-danger mt-2" *ngIf="contactNo.touched && contactNo.invalid">
+            <p *ngIf="contactNo.errors.required">This field cannot be empty</p>
+            <p *ngIf="contactNo.errors.minlength">This field should contain atleast 10 digits</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 float-left">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" class="form-control" #email="ngModel" ngModel
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+          <div class="alert alert-danger mt-2" *ngIf="email.touched && email.invalid">
+            <p *ngIf="email.errors.required">This field cannot be empty</p>
+            <p *ngIf="email.errors.pattern">This field accepts only Email</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="currOrg"> Current Organisation</label>
+          <input type="text" name="currOrg" id="currOrg" class="form-control" ngModel
+          #currOrg="ngModel" minlength="3" required>
+          <div class="alert alert-danger mt-2" *ngIf="currOrg.touched && currOrg.invalid">
+            <p *ngIf="currOrg.errors.required">This field cannot be empty</p>
+            <p *ngIf="currOrg.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="totalExp">Total Experience</label>
+          <input type="text" name="totalExp" id="totalExp" class="form-control" ngModel
+          #totalExp="ngModel" minlength="3" required>
+          <div class="alert alert-danger mt-2" *ngIf="totalExp.touched && totalExp.invalid">
+            <p *ngIf="totalExp.errors.required">This field cannot be empty</p>
+            <p *ngIf="totalExp.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="relevantExp">Relevant Experience</label>
+          <input type="text" name="relevantExp" id="relevantExp" class="form-control" ngModel
+          #relevantExp="ngModel" minlength="3" required>
+          <div class="alert alert-danger mt-2" *ngIf="relevantExp.touched && relevantExp.invalid">
+            <p *ngIf="relevantExp.errors.required">This field cannot be empty</p>
+            <p *ngIf="relevantExp.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="relocate">Ready to relocate?</label>
+          <input list="relocate" name="relocate" class="form-control" #relocate="ngModel" ngModel minlength="2" required>
+          <datalist id="relocate">
+            <option value="yes">
+            <option value="no">
+          </datalist>
+          <div class="alert alert-danger mt-2" *ngIf="relocate.touched && relocate.invalid">
+              <p *ngIf="relocate.errors.required">This field cannot be empty</p>
+              <p *ngIf="relocate.errors.minlength">This field should contain atleast 2 characters</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4 float-left">
+        <div class="form-group">
+          <label for="cctc">CCTC</label>
+          <input type="text" name="cctc" id="cctc" class="form-control" ngModel
+          #cctc="ngModel" minlength="3" required>
+          <div class="alert alert-danger mt-2" *ngIf="cctc.touched && cctc.invalid">
+            <p *ngIf="cctc.errors.required">This field cannot be empty</p>
+            <p *ngIf="cctc.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ectc">ECTC</label>
+          <input type="text" name="ectc" id="ectc" class="form-control" ngModel
+          #ectc="ngModel" minlength="3" required>
+          <div class="alert alert-danger mt-2" *ngIf="ectc.touched && ectc.invalid">
+            <p *ngIf="ectc.errors.required">This field cannot be empty</p>
+            <p *ngIf="ectc.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="noticePeriod">Notice Period</label>
+          <input type="text" name="noticePeriod" id="noticePeriod" class="form-control" ngModel
+          #noticePeriod="ngModel" minlength="3" required>
+          <div class="alert alert-danger mt-2" *ngIf="noticePeriod.touched && noticePeriod.invalid">
+            <p *ngIf="noticePeriod.errors.required">This field cannot be empty</p>
+            <p *ngIf="noticePeriod.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" name="location" id="location" class="form-control" ngModel
+          #location="ngModel" minlength="3" required>
+          <div class="alert alert-danger mt-2" *ngIf="location.touched && location.invalid">
+            <p *ngIf="location.errors.required">This field cannot be empty</p>
+            <p *ngIf="location.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="interviewPanel">Interview Panel</label>
+          <input type="text" name="interviewPanel" id="interviewPanel" class="form-control" ngModel
+          #interviewPanel="ngModel" minlength="3" required>
+          <div class="alert alert-danger mt-2" *ngIf="interviewPanel.touched && interviewPanel.invalid">
+            <p *ngIf="interviewPanel.errors.required">This field cannot be empty</p>
+            <p *ngIf="interviewPanel.errors.minlength">This field should contain atleast 3 characters</p>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-outline-dark form-control" [disabled]="form.invalid">Submit</button>
+    </form>
+  </div>
+</div>

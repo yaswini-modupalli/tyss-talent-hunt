@@ -1,0 +1,65 @@
+<div class="container mt-4 mb-4">
+  <table class="table table-bordered table-hover table-striped table-dark">
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th>Candidate Name</th>
+        <th>Stack</th>
+        <th>Ph.No.</th>
+        <th>Email</th>
+        <th>Schedule Date & Time</th>  
+        <th>More Info</th>     
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let interview of interviewService.interviews; index as i">
+        <td>{{i+1}}</td>
+        <td>{{interview.cname}}</td>
+        <td>{{interview.stack}}</td>
+        <td>{{interview.contactNo}}</td>
+        <td>{{interview.email}}</td>
+        <td>{{interview.sdate | date : full}}</td>
+        <td>
+            
+          <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    info...
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade text-dark" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group">
+            <li class="list-group-item">Name :&nbsp;<span class="font-weight-bold">{{interview.cname | titlecase}}</span></li>
+            <li class="list-group-item">Gender :&nbsp;<span class="font-weight-bold">{{interview.gender}}</span></li>
+            <li class="list-group-item">Contact :&nbsp;<span class="font-weight-bold">{{interview.contactNo}}</span></li>
+            <li class="list-group-item">Email :&nbsp;<span class="font-weight-bold">{{interview.email}}</span></li>
+            <li class="list-group-item">Name :&nbsp;<span class="font-weight-bold">{{interview.cname}}</span></li>
+            <li class="list-group-item">Name :&nbsp;<span class="font-weight-bold">{{interview.cname}}</span></li>
+            <li class="list-group-item">Name :&nbsp;<span class="font-weight-bold">{{interview.cname}}</span></li>
+            <li class="list-group-item">Name :&nbsp;<span class="font-weight-bold">{{interview.cname}}</span></li>
+            <li class="list-group-item">Name :&nbsp;<span class="font-weight-bold">{{interview.cname}}</span></li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        </td>
+        <td><button class="btn btn-outline-warning">Update</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
