@@ -16,6 +16,7 @@ export class InterviewService {
     stack: '',
     contactNo: null,
     email: '',
+    relocate: '',
     currOrg: '',
     totalExp: '',
     relevantExp: '',
