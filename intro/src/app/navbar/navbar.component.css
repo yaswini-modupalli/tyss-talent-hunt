@@ -1,0 +1,21 @@
+a, span {
+    color: black; 
+}
+.custom-nav {
+    background-color: #89CA24;
+}
+#navbarNav {
+    position: relative;
+    width: 100%;
+}
+#navbarNav ul {
+    text-align: left;
+    width: 100%;
+}
+button {
+  background-color: #89CA24;
+  color: black; 
+}
+span {
+    box-sizing: content-box;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { RequirementService } from '../requirement.service';
+import { RequirementService } from '../Services/requirement/requirement.service';
 import { Requirement } from '../Models/requirement';
 
 @Component({

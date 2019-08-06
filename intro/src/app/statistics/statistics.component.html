@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
+<div class="container card my-4">
+  <div class="card-body">
+    <form #form="ngForm" (ngSubmit)="search()">
+      <div class="form-row align-items-center">
+        <div class="col-auto">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">From</span>
+            </div>
+            <input type="date" class="form-control" name="fromDate" id="fromDate" ngModel #fromDate="ngModel">
+          </div>
+        </div>
+        <div class="col-auto">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">To</span>
+            </div>
+            <input type="date" class="form-control" name="toDate" id="toDate" ngModel #toDate="ngModel">
+          </div>
+        </div>
+        <div class="col-auto">
+          <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Search</span>
+              </div>
+              <input class="form-control" type="text" name="seach" id="seach" placeholder="Search Here" ngModel #seach="ngModel">
+          </div>
+        </div>
+        <div class="col-auto text-center">
+          <button type="submit" class="btn" [disabled]="form.untouched">Search</button>
+        </div>
+      </div>
+    </form>
+    <hr>
+    <h4 class="mt-4">Result here</h4>
+  </div>
+</div>

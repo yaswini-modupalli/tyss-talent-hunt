@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
+
+<div class="container-fluid mt-4">
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h5 class="my-0 font-weight-normal">Requirements</h5>
+            </div>
+            <div class="card-body">
+                <a class="h1 card-title pricing-card-title" routerLink="../view-requirement">46</a>
+                <ul class="list-unstyled my-2">
+                    <li>10 Robert Bosch</li>
+                    <li>2 Google</li>
+                    <li>4 Internal Dev</li>
+                    <li>10 Bench</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h5 class="my-0 font-weight-normal">Filled Requirement</h5>
+            </div>
+            <div class="card-body">
+                <a class="h1 card-title pricing-card-title" routerLink="../view-requirement">10 / 44</a>
+                <ul class="list-unstyled my-2">
+                    <li>4 Bosch</li>
+                    <li>3 Google</li>
+                    <li>1 Internal Dev</li>
+                    <li>2 Bench</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card mb-4 box-shadow" *ngIf="!authService.isAdmin">
+            <div class="card-header">
+                <h5 class="my-0 font-weight-normal">Scheduled Interviews</h5>
+            </div>
+            <div class="card-body">
+                <a class="h1 card-title pricing-card-title" routerLink="../schedule-interview">23 / 50</a>
+                <ul class="list-unstyled my-2">
+                    <li>18 Robert Bosch</li>
+                    <li>4 Google</li>
+                    <li>1 Internal Dev</li>
+                    <li>0 Bench</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h5 class="my-0 font-weight-normal">Shortlisted</h5>
+            </div>
+            <div class="card-body">
+                <a class="h1 card-title pricing-card-title" routerLink="../view-schedules">15 / 23</a>
+                <ul class="list-unstyled my-2">
+                    <li>3 Robert Bosch</li>
+                    <li>5 Google</li>
+                    <li>3 Internal Dev</li>
+                    <li>4 Bench</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="chart-container"></div>

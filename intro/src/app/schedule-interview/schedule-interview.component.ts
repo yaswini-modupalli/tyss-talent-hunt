@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InterviewService } from '../interview.service';
+import { InterviewService } from '../Services/interview/interview.service';
 import { NgForm } from '@angular/forms';
 import { Interview } from '../Models/interview';
 
@@ -40,5 +40,4 @@ export class ScheduleInterviewComponent implements OnInit {
   ngOnInit() {
     this.getInterviews();
   }
-
 }

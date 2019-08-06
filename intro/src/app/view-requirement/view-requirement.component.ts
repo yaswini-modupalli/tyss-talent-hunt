@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Requirement } from '../Models/requirement';
-import { RequirementService } from '../requirement.service';
+import { RequirementService } from '../Services/requirement/requirement.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -17,6 +17,7 @@ export class ViewRequirementComponent implements OnInit {
       form.reset();
     }
   }
+  
   //get data
   getRequirement() {
     this.reqService.getData().subscribe(res => {
@@ -41,8 +42,8 @@ export class ViewRequirementComponent implements OnInit {
     this.reqService.selectedRequirement = requirement;
   }
 
-   // remove data
-   removeRequirement(id) {
+  // remove data
+  removeRequirement(id) {
     this.reqService.deleteData(id).subscribe(() => {
       this.getRequirement();
     });
@@ -51,5 +52,4 @@ export class ViewRequirementComponent implements OnInit {
   ngOnInit() {
     this.getRequirement();
   }
-
 }
